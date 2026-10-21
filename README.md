@@ -1,82 +1,54 @@
-# Object Collection Template
+# Online Museum Template
 
-A website template for collections built around things — artefacts, sites,
-specimens, images, places — built on the [Xanthan](https://github.com/xanthan-web/xanthan)
-framework and hosted on GitHub Pages.
+A website template for an **online-only museum of historical objects and essays**, built on the [Xanthan](https://github.com/xanthan-web/xanthan) framework and hosted on GitHub Pages. Designed for classes where instructors and students have little or no coding experience.
 
-**[Live demo](https://xanthan-web.github.io/object-collection-template)** · **[Xanthan docs](https://xanthan-web.github.io/xanthan/docs/)**
+## What you get
 
----
+- A modern museum look: warm paper tones, a vermilion accent, Newsreader and Manrope type.
+- **Objects**: a "wall label" page for each object, with a filterable grid, a gallery and a map.
+- **Essays**: magazine-style long reads with a lead image, reading progress, pull quotes, captioned pictures that zoom, and "look closer" boxes.
+- **Copy-and-fill templates** so students never start from a blank page.
+- A built-in **Student Guide** (`/instructions`) and **Instructor Guide** (`/instructors`).
 
-## What This Is
+## Quick start (instructors)
 
-Each object gets its own folder holding its page and its images. The catalogue
-facts live in that page's front matter, so they are written once and read
-everywhere: an image-first grid assembles the directory, a map plots whatever
-carries coordinates, and search indexes the lot.
+1. Click **Use this template** on GitHub and create a public repository.
+2. In `_config.yml`, set `title`, `baseurl` (`/your-repo-name`) and the `museum:` footer lines.
+3. Turn on GitHub Pages in **Settings, Pages**.
+4. Invite students as collaborators and send them the Student Guide page.
 
-Choose this over the Essay Collection template when the object *is* the entry
-and the writing supports it — a digital exhibit, a material-culture course, a
-site survey, a collection catalogue.
-
-A finished example: [Material Objects of the Silk Road](https://amaranth.unm.edu/silk-road/)
-
----
+Full details are in `instructors.md`.
 
 ## Structure
 
 ```
 objects/
+  _template/        ← students copy this to add an object
   bowl-with-dragons/
-    index.md        ← the entry, with catalogue facts in its front matter
-    images/         ← that object's images, kept beside it
+    index.md        ← front matter facts + writing
+    images/
 essays/
+  _template/        ← students copy this to add an essay
   borrowed-forms/
-    index.md        ← a thematic essay, citing objects by slug
-index.md            ← homepage: hero, featured objects, links
-objects.md          ← the grid, assembled from objects/
-gallery.md          ← the same objects as a full-width wall of pictures
-essays/index.md     ← the essays, assembled from essays/
-map.md              ← every object with geo coordinates
-about.md            ← what the collection is and who made it
-instructions.md     ← how to add an object
-docs/               ← full Xanthan documentation (synced from the framework)
+index.md            ← home page
+objects.md          ← object grid (built automatically)
+essays/index.md     ← essay grid (built automatically)
+gallery.md, map.md, about.md
+instructions.md     ← Student Guide
+instructors.md      ← Instructor Guide
+assets/css/themes/museum.css   ← palette and fonts live at the top
+_layouts/object.html, essay.html
+_includes/museum/, _includes/essay/
 ```
 
-Nothing indexes objects by hand. The grid is a Liquid query over the folder:
+Adding a folder adds it to the grids. Deleting one removes it. Folders starting with `_` are never published.
 
-```liquid
-{% assign objects = site.pages | where_exp: "p", "p.path contains 'objects/'" %}
-```
+## Customise
 
-So adding a folder adds a tile, and deleting one removes it.
+Edit the **THE PALETTE** and **THE FONTS** blocks at the top of `assets/css/themes/museum.css`. Edit the menu in `_data/nav-top.yml` and the home page in `index.md`.
 
-Essays work the same way and sit alongside rather than above. An object page
-describes one thing; an essay follows a motif, a material, or a gap in the
-record through several of them, naming the objects it argues from by slug so
-their pictures and links assemble themselves. Objects stay independent of the
-essays that cite them, so an argument can be added or withdrawn without
-disturbing the collection underneath it.
+## Samples
 
----
+Three sample objects and two sample essays are included as stand-ins. Their images come from [The Metropolitan Museum of Art](https://www.metmuseum.org/) open-access collection; the text is placeholder. Delete them when you are ready.
 
-## Getting Started
-
-1. Click **Use this template** on GitHub to make your own copy.
-2. In `_config.yml`, set `title` and `baseurl` to match your repository name.
-3. Copy a folder under `objects/`, rename it, and replace what is inside.
-4. Delete the three samples when you no longer need them.
-
-`instructions.md` covers the front matter fields in full, and ships as a page on
-the site so contributors can read it without opening the repository.
-
----
-
-## The Samples
-
-Three sample objects and two sample essays are included as stand-ins so the site
-looks like a working collection before you add anything. The essays deliberately
-overlap — one object is read in both — to show that an object is not used up by
-the first argument made about it. The images come from
-[The Metropolitan Museum of Art](https://www.metmuseum.org/)'s open-access
-collection; the text is placeholder written for this template.
+More about Xanthan: [documentation](https://xanthan-web.github.io/xanthan/docs/).

@@ -1,5 +1,11 @@
-title: Object Collection Template
-baseurl: "/object-collection-template"   # leave empty for username.github.io repos
+title: The Online Museum
+tagline: A museum of objects and the stories they tell
+baseurl: "/object-collection-template"   # the name of your GitHub repository, with a leading slash
 analytics_id:   # optional: paste your Google Analytics measurement ID (G-XXXXXXXXXX)
 search: true    # set to false to disable site search
-theme_css: canyon-wall   # see docs/reference/themes; delete this line for the default look
+theme_css: museum   # the museum look lives in assets/css/themes/museum.css
+
+# Shown in the footer of every page. Change these to your course.
+museum:
+  credit: "An online-only museum. There is no building, only the collection."
+  course: "Course name · University name · Semester Year"

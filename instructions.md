@@ -1,161 +1,147 @@
 ---
-title: Instructions
+title: Student Guide
 layout: default
 date: 2026-01-01
-summary: How to add an object to this collection, and what each front matter field does.
+summary: Step-by-step instructions for adding your object and essay to the museum.
 ---
 
-{% include nav/scrollspy-toc.html %}
+<span class="m-kicker">Guide for students</span>
 
-# Adding to the Collection
+# How to add your work
 
 {: .lede}
-Everything in this collection is a folder with a page in it, whether it is an
-object or an essay about several. To add either, copy one of the samples, rename
-the folder, and change what is inside. Nothing else on the site needs editing —
-the grid, the gallery, the map, and search all read from the page you just made.
+You do not need to know how to code. You will copy a template, fill in the blanks, and save. This page walks you through it.
 
-## Adding an object
+## Before you start
 
-### The short version
+You need:
 
-1. Copy any folder under `objects/` and give the copy a new name.
-2. Put your images in its `images/` folder.
-3. Open `index.md` in the copy and change the front matter and the text.
-4. Commit. The object appears on the [objects page]({{ site.baseurl }}/objects)
-   and in the [gallery]({{ site.baseurl }}/gallery), and, if it has coordinates,
-   on the [map]({{ site.baseurl }}/map).
+1. A free [GitHub](https://github.com) account.
+2. An invitation to this project from your instructor. Accept it by email.
+3. Your pictures, saved as `.jpg` files under 1 MB each, with names in lowercase and hyphens (`grandmothers-suitcase.jpg`).
 
-The folder name becomes the object's web address, so use lowercase words joined
-by hyphens: `bowl-with-dragons`, not `Bowl With Dragons (final).md`.
+## Step 1. Open the editor
 
-### What each front matter field does
+1. Go to the project page on GitHub (your instructor will give you the link).
+2. Press the **`.`** (full stop) key on your keyboard. A code editor opens in your browser.
 
-The block at the top of an object page, between the `---` lines, is where the
-catalogue facts live. Write them once here and they appear everywhere.
+You will see a list of folders on the left. The two you care about are **`objects`** and **`essays`**.
 
-| Field | Required | What it does |
-|-------|----------|--------------|
-| `title` | yes | The object's name, used on the page, the grid, and the map |
-| `summary` | yes | One or two sentences. Appears under the title on the grid and in the map popup |
-| `thumbnail` | yes | The image the grid tile and the gallery tile use, and the picture in the map popup. A path inside this folder, e.g. `images/bowl.jpg` |
-| `header-image` | no | The wide image across the top of the object's own page |
-| `header-title` | no | The text shown on that header. Without it the header renders empty |
-| `header-tier` | no | `hero` (full screen), `section` (~60vh), or `banner` (~22vh). The samples use `banner` |
-| `header-position` | no | Which part of the image to keep when it is cropped, e.g. `center 38%` |
-| `author` | no | Who wrote the entry. Shown on cards that display a byline |
-| `geo` | no | `[latitude, longitude]`. Add it and the object appears on the map; leave it out and it does not |
-| `placename` | no | Where the object is from, shown in the map popup |
-| `medium`, `object-date`, `collection` | no | Your own catalogue fields. These three are printed in the map popup because `map.md` asks for them by name; add whatever else your collection needs |
-| `tags` | no | A list. Objects that share a tag can be found together |
+## Step 2. Copy the template
 
-Field names you invent yourself work the same way as the ones above. If your
-collection needs `accession-number` or `excavation-season`, add it — and if you
-want it in the map popup as well, add it to the `fields` list in `map.md`.
+**To add an object**
 
----
+1. Open the `objects` folder.
+2. Right-click the **`_template`** folder and choose **Copy**, then right-click `objects` and choose **Paste**.
+3. Right-click the new copy and choose **Rename**. Give it a short name in lowercase with hyphens, like `grandmothers-suitcase`. This name becomes part of the web address.
 
-## Adding an essay
+**To add an essay**, do the same thing in the `essays` folder.
 
-An object page describes one thing. An essay follows something through several
-of them, and lives in exactly the same shape: a folder under `essays/` with an
-`index.md` inside it. Copy one of the two samples and change what is in it.
+## Step 3. Fill in the blanks
 
-Essays use `title`, `summary`, `thumbnail`, `tags`, and the `header-` fields the
-same way objects do. Two fields are theirs alone:
+1. Open `index.md` inside your new folder.
+2. At the top, between the two lines of `---`, are the "front matter" lines. Change the words after each colon.
+3. Below that is the writing. Replace the sample text with your own.
+4. Grey text inside `<!-- -->` is a note to you. You can delete it.
 
-| Field | Required | What it does |
-|-------|----------|--------------|
-| `position` | no | A number. Fixes the order the essays appear in on the essays page; without it the order is whatever Jekyll happened to find |
-| `objects` | no | The objects the essay argues from, each with a `slug` (the object's folder name) and an optional `label` |
+### Object fields
 
-The `objects` block is what builds the strip of thumbnails inside an essay:
+| Field | What to write | Required |
+|---|---|---|
+| `title` | The name of the object | Yes |
+| `author` | Your name | Yes |
+| `thumbnail` | The picture file, like `images/suitcase.jpg` | Yes |
+| `summary` | One or two sentences about the object | Yes |
+| `image-alt` | A description of the picture for people who cannot see it | Yes |
+| `image-credit` | Where the picture came from | Yes |
+| `maker`, `object-date`, `placename`, `medium`, `dimensions`, `collection`, `accession` | Facts for the label. Delete a line if you do not know it. | No |
+| `tags` | One to three themes. Reuse tags other students have used so the filters work. | No |
+| `published` | `false` hides your page. Delete the line when you are done. | No |
 
-```yaml
-objects:
-  - slug: buddha-head
-    label: Gandhara, 4th–5th century
-  - slug: bowl-with-dragons
-    label: Tabriz, 1210
+### Essay fields
+
+| Field | What to write | Required |
+|---|---|---|
+| `title` | Your headline | Yes |
+| `author` | Your name | Yes |
+| `kicker` | A short label above the title | No |
+| `summary` | One sentence that makes your argument | Yes |
+| `lead-image`, `lead-image-alt`, `lead-image-caption` | The big picture at the top | Yes |
+| `thumbnail` | The picture for your card | Yes |
+| `objects` | The objects your essay is about (use the folder name as `slug`) | No |
+| `position` | Order on the Essays page. Leave it, your instructor will set it. | No |
+
+## Step 4. Add pictures
+
+1. In the editor, open your folder's **`images`** folder.
+2. Drag your picture files from your computer into it.
+3. Use the file name in the blanks: `images/suitcase.jpg`.
+
+Always write alt text and a credit. If you did not take the picture, say who did and link to the source.
+
+## Step 5. Use the special blocks
+
+You can copy these blocks into your writing. Change only the words inside the quotation marks.
+
+**A picture with caption**
+
 ```
-
-```liquid
-{% raw %}{% include layout/picks.html
-  items=page.objects
-  collection="objects"
-  variant="strip"
-  columns=2
-  kicker="Objects in this essay"
-  title="Two things that borrowed a shape."
+{% raw %}{% include essay/figure.html
+  image="images/suitcase.jpg"
+  alt="Describe the picture"
+  caption="What it shows and where it came from."
+  size="wide"
 %}{% endraw %}
 ```
 
-Each object's picture, title, and link come from its own page, so the strip
-never needs updating when an object does. Name a slug that does not exist and
-the page prints a visible warning rather than quietly dropping it.
+`size` can be `small`, `normal`, `wide`, or `full`.
 
-Link the objects in the prose as well as in the strip — a reader partway through
-a paragraph should be able to go and look at the thing being described. An essay
-does not own the objects it cites: several essays can argue from the same object,
-and deleting an essay leaves the objects untouched.
+**A feature card for an object**
 
-An essay borrows the objects' images by default, with a site-root path:
-
-```liquid
-{% raw %}{% include images/figure.html
-  image-path="/objects/buddha-head/images/buddha-head-back.jpg"
-  alt-text="The reverse of the stucco head"
-%}{% endraw %}
+```
+{% raw %}{% include essay/object.html slug="bowl-with-dragons" note="Why it matters." %}{% endraw %}
 ```
 
-When an essay needs pictures of its own — a map, a diagram, a comparison from
-outside the collection — give it an `images/` folder next to its `index.md` and
-write the shorter relative path, exactly as the objects do.
+**A "look closer" box readers can open**
 
----
+```
+{% raw %}{% include essay/look-closer.html title="Look closer: a detail" text="Explain it." %}{% endraw %}
+```
 
-## Images
+**A pull quote**
 
-Keep an object's images in its own folder, next to its page. Then a path like
-`images/bowl.jpg` works, and moving the folder moves everything with it.
+```
+{% raw %}{% include typography/pullquote.html text="One memorable sentence." %}{% endraw %}
+```
 
-Two sizes are worth thinking about:
+## Writing tips
 
-- **The thumbnail** is seen small, in a grid with others. Crop it so the object
-  fills the frame. The objects page squares it; the gallery keeps whatever
-  proportions you give it, so the crop you choose is the shape it will be.
-- **The header image** runs wide and shallow across the top of the page. A tall
-  image will be cropped badly; a wide one will not.
+| Part | Length |
+|---|---|
+| Object description | 150 to 300 words |
+| Essay | 800 to 1,500 words |
+| Essay opening paragraph | 60 to 100 words |
+| Essay sections | 2 to 4, each with a short heading |
 
-Images larger than about 2000 pixels on the long side make pages slow to load
-without looking any better. Resize before uploading.
+Use `## Heading` for a section heading and `*word*` for italics. Leave a blank line between paragraphs.
 
----
+## Step 6. Save and send
 
-## Writing the entry
+1. Click the **Source Control** icon on the left (a branch symbol).
+2. Type a short message, like "Add suitcase object".
+3. Click **Commit & Push**. Choose **Create a new branch** if asked, then name it after yourself.
+4. Tell your instructor. They will review and publish your work.
 
-The sample objects show the shape: a paragraph saying what the reader is looking
-at, then sections that make an argument about it. Use the
-[Component Library]({{ site.baseurl }}/docs/reference/component-library) for
-figures, asides, pull quotes, and carousels.
+The site updates a couple of minutes after your instructor approves it.
 
-Two habits worth keeping:
+## Troubleshooting
 
-**Say why the object is in the collection.** The front matter already says what
-it is. The page should say what it lets a reader see.
+| Problem | Try this |
+|---|---|
+| My page does not appear | Check that `published: false` has been removed and that the folder name has no spaces or capital letters. |
+| My picture is missing | Check the file name matches exactly, including `.jpg`. Check it is in your `images` folder. |
+| The page is blank or broken | Check the `---` lines are at the top and after the front matter, and that every quotation mark has a partner. |
+| A colon in my title breaks things | Put the title in quotation marks: `title: "Trade: A Story"`. |
+| My block shows as text | Check it starts with `{% raw %}{% include{% endraw %}` and ends with `%}`. |
 
-**Credit the image.** If it comes from a museum's open-access collection, name
-the museum and link the record. Captions are the right place.
-
----
-
-## Removing the samples
-
-The three sample objects and the two sample essays are stand-ins. When you have
-your own, delete their folders, then edit `index.md` at the top level — the hero
-text, the three featured objects, and the closing links all name them.
-
-Delete the essays and nothing else breaks: the objects they cite carry on
-without them, and the essays page simply shows no cards. If your collection has
-no use for essays at all, remove the `essays/` folder and its line in
-`_data/nav-top.yml`.
+Still stuck? Ask your instructor and share the page name.

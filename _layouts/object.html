@@ -1,0 +1,54 @@
+---
+layout: base
+---
+{% comment %}
+  Object layout — the page for one object in the collection.
+
+  Set `layout: object` in an object's front matter. The picture and the "wall
+  label" at the top are built from the front matter, so students never touch
+  this file. Whatever they write in the body of their page appears underneath.
+{% endcomment %}
+
+{% assign hero_image = page.image | default: page.thumbnail %}
+{% capture hero_url %}{% include helpers/image-path.html image-path=hero_image %}{% endcapture %}
+
+<section class="object-hero">
+  <div class="object-hero-inner">
+    <figure class="object-hero-media">
+      {% if hero_image %}
+      <a href="{{ hero_url | strip }}" class="m-zoom" aria-label="View a larger image of {{ page.title | escape }}">
+        <img src="{{ hero_url | strip }}" alt="{{ page.image-alt | default: page.title | escape }}">
+      </a>
+      {% if page.image-credit %}<figcaption>{{ page.image-credit | markdownify | remove: '<p>' | remove: '</p>' }}</figcaption>{% endif %}
+      {% endif %}
+    </figure>
+
+    <div class="object-label">
+      <span class="m-kicker">{{ page.category | default: "Object" }}</span>
+      <h1>{{ page.title }}</h1>
+      {% if page.summary %}<p class="object-summary">{{ page.summary }}</p>{% endif %}
+
+      <dl class="object-facts">
+        {% if page.object-date %}<div><dt>Date</dt><dd>{{ page.object-date }}</dd></div>{% endif %}
+        {% if page.maker %}<div><dt>Maker</dt><dd>{{ page.maker }}</dd></div>{% endif %}
+        {% if page.placename %}<div><dt>Place</dt><dd>{{ page.placename }}</dd></div>{% endif %}
+        {% if page.medium %}<div><dt>Medium</dt><dd>{{ page.medium }}</dd></div>{% endif %}
+        {% if page.dimensions %}<div><dt>Dimensions</dt><dd>{{ page.dimensions }}</dd></div>{% endif %}
+        {% if page.collection %}<div><dt>Held by</dt><dd>{{ page.collection }}</dd></div>{% endif %}
+        {% if page.accession %}<div><dt>Accession</dt><dd>{{ page.accession }}</dd></div>{% endif %}
+      </dl>
+
+      {% if page.tags and page.tags.size > 0 %}
+      <ul class="object-tags" aria-label="Themes">
+        {% for tag in page.tags %}<li>{{ tag | replace: '-', ' ' }}</li>{% endfor %}
+      </ul>
+      {% endif %}
+
+      {% if page.author %}<p class="object-credit">Entry by <strong>{{ page.author }}</strong></p>{% endif %}
+    </div>
+  </div>
+</section>
+
+<div class="object-body">
+{{ content }}
+</div>
