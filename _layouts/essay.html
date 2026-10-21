@@ -49,6 +49,7 @@ layout: base
   kicker="In the collection"
   title="Objects in this essay"
 %}{% endcapture %}
-{{ essay_picks | replace: "{::nomarkdown}", "" | replace: "{:/nomarkdown}", "" }}
+{% assign nm_open = "{:" | append: ":nomarkdown}" %}{% assign nm_close = "{:/nomarkdown" | append: "}" %}
+{{ essay_picks | remove: nm_open | remove: nm_close }}
 </div>
 {% endif %}
