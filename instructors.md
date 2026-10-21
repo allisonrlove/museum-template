@@ -40,6 +40,29 @@ Press **`.`** on the repository page to edit in the browser.
 
 Palette changes apply everywhere. Keep text and background contrast high so pages stay readable.
 
+### Adding a guided route
+
+Routes appear on the **Plan Your Visit** page. To add one:
+
+1. Open `_data/routes.yml`.
+2. Copy a whole block (from `- title:` to the last stop) and paste it below the others.
+3. Change the words after each colon:
+
+```yaml
+- title: Small and powerful
+  minutes: 20
+  description: One sentence telling visitors what this walk is about.
+  stops:
+    - mitanni-cylinder-seal
+    - tsuba-sword-guard
+    - scarab-of-queen-tiye
+```
+
+4. Each line under `stops` is an **object folder name** (the folder inside `objects/`), in the order visitors should see them. Keep the dashes and the two-space indents exactly as shown.
+5. Save. The new route appears on the Visit page. If a stop does not show, check the folder name for typos.
+
+To remove a route, delete its whole block.
+
 ## 3. Clear the samples
 
 Delete the folders inside `objects`, `essays` and `exhibitions` that do not start with `_`, clear `_data/routes.yml`, and set `spotlight:` on `index.md` to one of your own objects. Keep `_template` folders. Students copy them. Plan rooms after students have added their objects: a room is a curated path through them.
