@@ -1,0 +1,2 @@
+Put your pictures in this folder.
+Use lowercase file names with hyphens and no spaces, like grandmothers-suitcase.jpg

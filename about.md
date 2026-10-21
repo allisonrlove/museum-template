@@ -2,25 +2,30 @@
 title: About
 layout: default
 date: 2026-01-01
-summary: What this collection is, who made it, and how it is meant to be used.
+summary: What this museum holds, who made it, and how to cite it.
 ---
 
-# About This Collection
+<span class="m-kicker">About the museum</span>
+
+# About this museum
 
 {: .lede}
-Replace this page with a description of your collection: what it holds, who
-built it, and what a reader is meant to do with it.
+**Instructors:** replace this page with a description of your museum. Delete the prompts in bold once you have written your own.
 
-A few things worth saying here, because readers ask them in this order:
+## What the museum holds
 
-**What is in the collection.** The scope — a museum's holdings, a course's
-research, a field survey, one excavation.
+**Say what is in the collection.** The time period, the region, the kinds of objects, and the question that holds them together.
 
-**Who made it.** Names, roles, and the course or project this belongs to. If
-students contributed, say so; public work should credit the people who did it.
+## Who made it
 
-**How it was made.** Where the objects and images come from, what rights they
-carry, and what a reader may do with them. Collections built from open-access
-museum images should say which museum and which licence.
+**Name the people.** The class, the instructor, the term, and the institution. Public work should credit the people who did it, so list every student contributor here.
 
-**How to cite it.** Give readers the form you would like to see.
+## How it was made
+
+**Explain where the objects and pictures come from.** Many museums share images of their objects for free in an "open access" program. If yours came from one, name the museum and the licence.
+
+## How to cite this museum
+
+**Give readers the form you would like to see.** For example:
+
+> Author Last Name, First Name. "Essay Title." *Museum Name*. Course Name, University, Year. URL.

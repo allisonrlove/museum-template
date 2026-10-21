@@ -1,0 +1,52 @@
+{% comment %}
+  Object Grid — the collection as a wall of object cards, with theme filters.
+
+  Parameters:
+    - items:   the object pages to show (required)
+    - filters: true | false — show the row of theme buttons (default: true)
+    - limit:   show only the first N objects (optional)
+
+  Each card reads its picture, title, date, and medium from that object's own
+  front matter, so nothing here is ever edited by hand.
+{% endcomment %}
+
+{% assign show_filters = include.filters | default: true %}
+{% assign sorted_items = include.items | sort: "title" %}
+{% if include.limit %}{% assign sorted_items = sorted_items | slice: 0, include.limit %}{% endif %}
+{% assign all_tags = sorted_items | map: "tags" | join: "," | split: "," | uniq | sort %}
+
+{::nomarkdown}
+{% if sorted_items.size > 0 %}
+<div class="m-wide-wrap" data-object-filter>
+  {% if show_filters and all_tags.size > 1 %}
+  <div class="m-filters" role="group" aria-label="Filter objects by theme">
+    <button type="button" class="m-filter" data-filter="all" aria-pressed="true">All</button>
+    {% for tag in all_tags %}{% if tag != "" %}
+    <button type="button" class="m-filter" data-filter="{{ tag | escape }}" aria-pressed="false">{{ tag | replace: '-', ' ' }}</button>
+    {% endif %}{% endfor %}
+  </div>
+  {% endif %}
+
+  <div class="m-object-grid">
+    {% for item in sorted_items %}
+    {% if item.title and item.thumbnail %}
+      {% capture item_url %}{% include helpers/link-path.html link=item.url %}{% endcapture %}
+      {% capture item_img %}{% include helpers/image-path.html image-path=item.thumbnail page-dir=item.dir %}{% endcapture %}
+      <article class="m-object" data-tags="{{ item.tags | join: ',' | escape }}">
+        <a href="{{ item_url | strip }}">
+          <div class="m-object-image"><img src="{{ item_img | strip }}" alt="" loading="lazy"></div>
+          <div class="m-object-meta">
+            {% if item.object-date %}<span class="m-object-date">{{ item.object-date }}</span>{% endif %}
+            <h3 class="m-object-title">{{ item.title }}</h3>
+            <p class="m-object-detail">{% if item.maker %}{{ item.maker }}{% if item.medium or item.placename %} · {% endif %}{% endif %}{% if item.medium %}{{ item.medium }}{% elsif item.placename %}{{ item.placename }}{% endif %}</p>
+          </div>
+        </a>
+      </article>
+    {% endif %}
+    {% endfor %}
+  </div>
+</div>
+{% else %}
+  <div class="xanthan-warning">No objects yet. Add a folder to <code>objects/</code> and it will appear here.</div>
+{% endif %}
+{:/nomarkdown}
