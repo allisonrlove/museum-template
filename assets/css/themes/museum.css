@@ -725,3 +725,252 @@ INSTRUCTION PAGES  — steps and checklists for students and instructors
 .container th { text-align: left; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; }
 .container th, .container td { border-bottom: 1px solid var(--museum-line); padding: 0.7rem 0.75rem; }
 .container th { background: var(--museum-mist); border-bottom: 1px solid var(--museum-ink); }
+
+/*****************************************************
+BUTTON VARIANTS ON DARK BACKGROUNDS
+*****************************************************/
+.m-button--light, .m-button--light:visited { background: var(--museum-paper); border-color: var(--museum-paper); color: var(--museum-ink); }
+.m-button--light:hover { background: var(--museum-accent); border-color: var(--museum-accent); color: #fff; }
+.m-button--outline, .m-button--outline:visited { background: transparent; border-color: rgba(248, 246, 243, 0.55); color: var(--museum-paper); }
+.m-button--outline:hover { background: var(--museum-paper); border-color: var(--museum-paper); color: var(--museum-ink); }
+
+/*****************************************************
+HOME  — dark opening with an "object of the week" spotlight
+*****************************************************/
+.container > .home-open { grid-column: full; background: var(--museum-ink); color: var(--museum-paper); }
+.home-open-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: center;
+  max-width: var(--home-measure);
+  min-height: min(82vh, 46rem);
+  margin-inline: auto;
+  padding: clamp(3rem, 7vw, 6rem) var(--spacing-md);
+}
+.home-open h1 {
+  margin: 0 0 1.5rem;
+  font-size: clamp(2.8rem, 7vw, 5.6rem);
+  font-weight: 300;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: var(--museum-paper);
+}
+.home-open .m-kicker { color: var(--museum-accent-light); }
+.home-open-lede { max-width: 34rem; margin: 0 0 2.25rem; font-size: 1.15rem; line-height: 1.6; color: rgba(248, 246, 243, 0.78); }
+.home-open-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 0; }
+.home-spotlight, .home-spotlight:visited {
+  position: relative; display: block;
+  padding: 1.25rem 1.25rem 1.5rem;
+  background: var(--museum-paper);
+  color: var(--museum-ink);
+  text-decoration: none; border: 0;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
+  transform: rotate(1.2deg);
+  transition: transform 0.4s ease;
+}
+.home-spotlight:hover { transform: rotate(0) translateY(-4px); color: var(--museum-ink); }
+.home-spotlight-label {
+  display: block; margin-bottom: 0.9rem;
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--museum-accent);
+}
+.home-spotlight img { display: block; width: 100%; max-height: 24rem; object-fit: contain; background: var(--museum-mist); }
+.home-spotlight-caption { display: block; margin-top: 1rem; }
+.home-spotlight-caption strong { display: block; font-family: var(--font-heading); font-size: 1.5rem; font-weight: 400; }
+.home-spotlight-caption span { display: block; margin: 0.2rem 0 0.6rem; font-size: 0.82rem; color: var(--museum-stone); }
+.home-spotlight-caption em { display: block; font-family: var(--font-serif); font-size: 1rem; line-height: 1.5; color: var(--museum-stone); }
+
+.container > .home-stats { grid-column: full; background: var(--museum-accent); color: #fff; }
+.home-stats dl {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  max-width: var(--home-measure); margin: 0 auto; padding: 0 var(--spacing-md);
+}
+.home-stats dl > div { padding: 1.6rem 1rem; text-align: center; border-left: 1px solid rgba(255, 255, 255, 0.25); }
+.home-stats dl > div:first-child { border-left: 0; }
+.home-stats dt { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.85; }
+.home-stats dd { margin: 0.2rem 0 0; font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; line-height: 1; }
+
+@media (max-width: 52rem) {
+  .home-open-inner { grid-template-columns: 1fr; min-height: 0; }
+  .home-spotlight { transform: none; }
+  .home-stats dl { grid-template-columns: repeat(2, 1fr); }
+  .home-stats dl > div:nth-child(3) { border-left: 0; }
+}
+
+/*****************************************************
+FILTER PANEL  — region and period
+*****************************************************/
+.m-filter-panel { display: grid; gap: 0.75rem; margin: 0 0 var(--spacing-lg); padding: 1.25rem 0; border-block: 1px solid var(--museum-line); }
+.m-filter-panel .m-filters { margin: 0; align-items: center; }
+.m-filter-label {
+  min-width: 5rem;
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--museum-stone);
+}
+.m-empty { padding: 3rem 0; text-align: center; color: var(--museum-stone); }
+.m-empty[hidden] { display: none; }
+
+/*****************************************************
+ROOM CARDS  — museum/exhibition-grid.html
+*****************************************************/
+.m-room-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: 1.25rem; }
+.m-room { margin: 0; }
+.m-room a, .m-room a:visited {
+  position: relative; display: block; min-height: 24rem;
+  overflow: hidden; border: 0; color: var(--museum-paper); text-decoration: none;
+  background: var(--museum-ink);
+}
+.m-room img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; opacity: 0.55; transition: transform 0.7s ease, opacity 0.4s;
+}
+.m-room a:hover img { transform: scale(1.05); opacity: 0.72; }
+.m-room-text {
+  position: absolute; inset: auto 0 0 0;
+  display: flex; flex-direction: column; gap: 0.4rem;
+  padding: 1.75rem;
+  background: linear-gradient(to top, rgba(33, 31, 31, 0.92), transparent);
+}
+.m-room-number { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--museum-accent-light); }
+.m-room-title { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 300; line-height: 1.1; }
+.m-room-summary { font-size: 0.92rem; line-height: 1.45; color: rgba(248, 246, 243, 0.82); }
+.m-room-count { font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(248, 246, 243, 0.7); }
+
+/*****************************************************
+EXHIBITION PAGE  (_layouts/exhibition.html)
+A dark gallery: objects on black, one at a time.
+*****************************************************/
+.container > .room-hero {
+  grid-column: full;
+  position: relative;
+  background: var(--museum-ink);
+  background-image: linear-gradient(rgba(33, 31, 31, 0.72), rgba(33, 31, 31, 0.92)), var(--room-image, none);
+  background-size: cover; background-position: center;
+  color: var(--museum-paper);
+}
+.room-hero-inner { max-width: var(--home-measure); margin-inline: auto; padding: clamp(4rem, 12vw, 9rem) var(--spacing-md) clamp(3rem, 8vw, 6rem); }
+.room-hero .m-kicker { color: var(--museum-accent-light); }
+.room-hero h1 { margin: 0 0 1.25rem; max-width: 18ch; font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 300; line-height: 1.02; letter-spacing: -0.03em; color: var(--museum-paper); }
+.room-summary { max-width: 38rem; margin: 0 0 1.5rem; font-family: var(--font-serif); font-size: 1.35rem; font-weight: 300; line-height: 1.5; color: rgba(248, 246, 243, 0.85); }
+.room-meta { margin: 0; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(248, 246, 243, 0.6); }
+
+.room-intro { padding: var(--spacing-xl) 0 var(--spacing-lg); font-family: var(--font-serif); font-size: 1.25rem; line-height: 1.7; }
+.room-intro > p:first-of-type { font-size: 1.45rem; }
+.room-intro, .room-stops, .room-reading { display: contents; }
+.container > .room-stops > .room-stop { grid-column: full; }
+
+.room-stop {
+  display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: clamp(2rem, 6vw, 5rem); align-items: center;
+  padding: clamp(2.5rem, 6vw, 5rem) max(var(--spacing-md), calc((100% - var(--home-measure)) / 2));
+  background: var(--museum-ink); color: var(--museum-paper);
+  border-top: 1px solid rgba(248, 246, 243, 0.12);
+}
+.room-stop:nth-child(even) { background: #2a2727; }
+.room-stop:nth-child(even) .room-stop-media { order: 2; }
+.room-stop-media { display: block; border: 0; text-align: center; }
+.room-stop-media img { max-width: 100%; max-height: 30rem; width: auto; height: auto; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5); transition: transform 0.6s ease; }
+.room-stop-media:hover img { transform: scale(1.02); }
+.container .room-stop-text > * { margin-left: 0; padding-left: 0; padding-right: 0; max-width: none; }
+.room-stop-number { display: block; margin-bottom: 1rem; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em; color: var(--museum-accent-light); }
+.room-stop h2 { margin: 0 0 0.5rem; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 300; }
+.room-stop h2 a, .room-stop h2 a:visited { color: var(--museum-paper); text-decoration: none; border: 0; }
+.room-stop-date { margin: 0 0 1.25rem; font-size: 0.85rem; color: rgba(248, 246, 243, 0.65); }
+.room-stop-note { margin: 0 0 1.75rem; font-family: var(--font-serif); font-size: 1.25rem; line-height: 1.55; color: rgba(248, 246, 243, 0.88); }
+
+.container > .room-reading > .room-reading-inner { grid-column: full; }
+.room-reading-inner { max-width: var(--home-measure); margin: 0 auto; padding: var(--spacing-xl) var(--spacing-md); }
+.room-reading-list { display: grid; gap: 0; margin: var(--spacing-md) 0 0; padding: 0; list-style: none; border-top: 1px solid var(--museum-ink); }
+.room-reading-list li { border-bottom: 1px solid var(--museum-line); }
+.room-reading-list a { display: grid; gap: 0.25rem; padding: 1.25rem 0; text-decoration: none; border: 0; color: inherit; }
+.room-reading-list strong { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 400; }
+.room-reading-list span { color: var(--museum-stone); }
+.room-reading-list a:hover strong { color: var(--museum-accent); }
+
+@media (max-width: 52rem) {
+  .room-stop { grid-template-columns: 1fr; }
+  .room-stop:nth-child(even) .room-stop-media { order: 0; }
+}
+
+/*****************************************************
+OBJECT PAGE — place in time, and the rooms an object is shown in
+*****************************************************/
+.container > .object-time { grid-column: full; background: var(--museum-ink); color: var(--museum-paper); }
+.object-time-inner {
+  display: grid; grid-template-columns: auto 1fr auto; gap: 1.5rem; align-items: center;
+  max-width: var(--home-measure); margin-inline: auto; padding: 1.1rem var(--spacing-md);
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+}
+.object-time-label strong { display: block; margin-top: 0.15rem; color: var(--museum-accent-light); letter-spacing: 0.08em; }
+.object-time-ends { color: rgba(248, 246, 243, 0.6); }
+.object-time-bar { position: relative; height: 1px; background: rgba(248, 246, 243, 0.35); }
+.object-time-dot { position: absolute; top: 50%; width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; border-radius: 50%; background: rgba(248, 246, 243, 0.55); }
+.object-time-dot.is-current { width: 15px; height: 15px; margin: -7.5px 0 0 -7.5px; background: var(--museum-accent); box-shadow: 0 0 0 5px rgba(180, 69, 31, 0.35); z-index: 1; }
+@media (max-width: 40rem) { .object-time-inner { grid-template-columns: 1fr; gap: 0.75rem; } }
+
+.container > .object-more { grid-column: full; margin-top: var(--spacing-xl); background: var(--museum-mist); }
+.object-more-inner { max-width: var(--home-measure); margin-inline: auto; padding: var(--spacing-xl) var(--spacing-md); }
+.object-more h2 { margin: 0 0 1rem; font-weight: 300; }
+.object-more-lead { margin: 0 0 1rem; color: var(--museum-stone); }
+.object-more-list { display: flex; flex-wrap: wrap; gap: 1rem; margin: 0; padding: 0; list-style: none; }
+.object-more-list a { display: block; width: 10rem; text-decoration: none; border: 0; color: inherit; }
+.object-more-list img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; background: var(--museum-line); }
+.object-more-list span { display: block; margin-top: 0.5rem; font-size: 0.85rem; font-weight: 600; }
+.object-more-list a:hover span { color: var(--museum-accent); }
+
+/*****************************************************
+TIMELINE  — museum/timeline.html
+*****************************************************/
+.m-timeline-nav { position: sticky; top: 0; z-index: 5; display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 var(--spacing-lg); padding: 0.75rem 0; background: var(--museum-paper); border-bottom: 1px solid var(--museum-line); }
+.m-timeline-nav a { padding: 0.45rem 0.9rem; border: 1px solid var(--museum-line); border-radius: 999px; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.06em; text-decoration: none; color: var(--museum-stone); }
+.m-timeline-nav a:hover { border-color: var(--museum-ink); color: var(--museum-ink); }
+.m-tl-era { margin-bottom: var(--spacing-xl); scroll-margin-top: 5rem; }
+.m-tl-era-title { margin: 0 0 var(--spacing-md); font-weight: 300; }
+.m-tl-list { position: relative; margin: 0; padding: 0 0 0 2rem; list-style: none; border-left: 2px solid var(--museum-ink); }
+.m-tl-item { position: relative; margin: 0 0 1.5rem; }
+.m-tl-item::before { content: ""; position: absolute; left: calc(-2rem - 7px); top: 0.35rem; width: 12px; height: 12px; border-radius: 50%; background: var(--museum-accent); border: 2px solid var(--museum-paper); }
+.m-tl-item a { display: block; text-decoration: none; border: 0; color: inherit; }
+.m-tl-date { display: block; margin-bottom: 0.5rem; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--museum-accent); }
+.m-tl-card { display: grid; grid-template-columns: 8rem 1fr; gap: 1.25rem; align-items: start; padding: 1rem; background: var(--museum-mist); transition: background 0.2s; }
+.m-tl-item a:hover .m-tl-card { background: var(--museum-blush); }
+.m-tl-card img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+.m-tl-text { display: grid; gap: 0.25rem; }
+.m-tl-text strong { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 400; }
+.m-tl-text span { font-size: 0.85rem; color: var(--museum-stone); }
+.m-tl-text em { font-family: var(--font-serif); font-style: normal; color: var(--museum-stone); }
+@media (max-width: 40rem) { .m-tl-card { grid-template-columns: 1fr; } .m-tl-card img { max-width: 8rem; } }
+.container .m-tl-list, .container .m-route-list { padding-right: 0; }
+.container .m-tl-text > *, .container .m-route-head > *, .container .object-more-inner > *, .container .room-reading-inner > * { padding-left: 0; padding-right: 0; margin-left: 0; max-width: none; }
+.container .m-tl-text > strong, .container .m-tl-text > span, .container .m-tl-text > em { display: block; }
+
+/*****************************************************
+HOME RIBBON  — museum/ribbon.html
+*****************************************************/
+.m-ribbon { overflow-x: auto; padding-bottom: 1rem; scroll-snap-type: x proximity; }
+.m-ribbon:focus-visible { outline: 2px solid var(--museum-accent); outline-offset: 4px; }
+.m-ribbon-track { display: flex; gap: 1rem; margin: 0; padding: 0; list-style: none; border-top: 2px solid var(--museum-ink); }
+.m-ribbon-track li { position: relative; flex: 0 0 12.5rem; padding-top: 1.25rem; scroll-snap-align: start; }
+.m-ribbon-track li::before { content: ""; position: absolute; top: -7px; left: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--museum-accent); }
+.m-ribbon-track a { display: block; text-decoration: none; border: 0; color: inherit; }
+.m-ribbon-date { display: block; margin-bottom: 0.6rem; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--museum-accent); }
+.m-ribbon-track img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; background: var(--museum-mist); }
+.m-ribbon-title { display: block; margin-top: 0.6rem; font-family: var(--font-heading); font-size: 1.1rem; line-height: 1.2; }
+.m-ribbon-track a:hover .m-ribbon-title { color: var(--museum-accent); }
+
+/*****************************************************
+ROUTES  — museum/routes.html
+*****************************************************/
+.m-route-list { display: grid; gap: 2rem; }
+.m-route { display: grid; grid-template-columns: minmax(0, 18rem) 1fr; gap: 2rem; padding: 2rem 0; border-top: 1px solid var(--museum-ink); }
+.m-route-minutes { display: inline-block; padding: 0.25rem 0.7rem; border: 1px solid var(--museum-accent); border-radius: 999px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--museum-accent); }
+.m-route-head h3 { margin: 0.9rem 0 0.5rem; font-size: 1.8rem; font-weight: 300; }
+.m-route-head p { margin: 0; color: var(--museum-stone); }
+.m-route-stops { counter-reset: stop; display: flex; gap: 0.9rem; margin: 0; padding: 0; overflow-x: auto; list-style: none; }
+.m-route-stops li { flex: 0 0 9rem; counter-increment: stop; }
+.m-route-stops a { display: block; text-decoration: none; border: 0; color: inherit; }
+.m-route-stops img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; background: var(--museum-mist); }
+.m-route-stop-title { display: block; margin-top: 0.5rem; font-size: 0.82rem; font-weight: 600; line-height: 1.3; }
+.m-route-stop-title::before { content: counter(stop) ". "; color: var(--museum-accent); }
+.m-route-stops a:hover .m-route-stop-title { color: var(--museum-accent); }
+@media (max-width: 52rem) { .m-route { grid-template-columns: 1fr; gap: 1rem; } }

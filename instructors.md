@@ -31,15 +31,63 @@ Press **`.`** on the repository page to edit in the browser.
 | Colours | `assets/css/themes/museum.css`, the **THE PALETTE** block at the top |
 | Fonts | The same file, **THE FONTS** block. Change the Google Fonts link and the two names. |
 | Menu | `_data/nav-top.yml` |
-| Home page | `index.md` |
+| Home page | `index.md`. Set `spotlight:` to an object's folder name to change the **Object of the week**. |
+| Exhibitions (rooms) | Copy `exhibitions/_template`, rename it, and list objects and essays by folder name. Set `position` for the order. |
+| Guided routes | `_data/routes.yml`: each route has a title, minutes, description and a list of object folder names. |
+| Timeline and filters | Automatic. They use each object's `year` and `region`. Eras: before 500 BCE, 500 BCE to 500 CE, 500 to 1500 CE, after 1500 CE. |
 | About page | `about.md` |
 | Footer | `_includes/layout/footer.html` |
 
 Palette changes apply everywhere. Keep text and background contrast high so pages stay readable.
 
+### Adding a guided route
+
+Routes appear on the **Plan Your Visit** page. To add one:
+
+1. Open `_data/routes.yml`.
+2. Copy a whole block (from `- title:` to the last stop) and paste it below the others.
+3. Change the words after each colon:
+
+```yaml
+- title: Small and powerful
+  minutes: 20
+  description: One sentence telling visitors what this walk is about.
+  stops:
+    - mitanni-cylinder-seal
+    - tsuba-sword-guard
+    - scarab-of-queen-tiye
+```
+
+4. Each line under `stops` is an **object folder name** (the folder inside `objects/`), in the order visitors should see them. Keep the dashes and the two-space indents exactly as shown.
+5. Save. The new route appears on the Visit page. If a stop does not show, check the folder name for typos.
+
+To remove a route, delete its whole block.
+
+### Adding an exhibition (room)
+
+An exhibition is a themed room built from objects students have already added. Do this after the objects exist.
+
+1. In the `exhibitions` folder, copy the `_template` folder and rename the copy (lowercase, dashes, like `trade-and-travel`).
+2. Open the `index.md` inside it and change `title`, `curator`, `summary` and `position` (the order on the Exhibitions page; lower numbers come first).
+3. Set `thumbnail` to the path of any object's picture, like `/objects/bowl-with-dragons/images/bowl-with-dragons.jpg`.
+4. Under `objects:`, list each stop with `slug` (the object's folder name) and `note` (one sentence on why it belongs). Copy the two-line pair for more stops. Order matters.
+5. Under `essays:`, list essay folder names to recommend, or delete those lines.
+6. Write a short introduction below the dashes.
+7. Delete the `published: false` line when it is ready.
+
+The room's stops, object count and each object's "Seen in" section fill in automatically.
+
+### Choosing the Object of the Week
+
+Open `index.md`. Change `spotlight:` to an object's folder name and `spotlight-note:` to one sentence about why it is featured. Update it weekly if you like.
+
+### Timeline, regions and eras
+
+These are automatic. Each object needs `year` (a number, negative for BCE) and `region` (Africa, Asia, Americas, Europe or Middle East). An object missing `year` will not appear on the timeline, and one missing `region` will not match the region filter. Check these first if an object seems to be missing.
+
 ## 3. Clear the samples
 
-Delete the folders inside `objects` and `essays` that do not start with `_`, and update the featured items on `index.md`. Keep `_template` folders. Students copy them.
+Delete the folders inside `objects`, `essays` and `exhibitions` that do not start with `_`, clear `_data/routes.yml`, and set `spotlight:` on `index.md` to one of your own objects. Keep `_template` folders. Students copy them. Plan rooms after students have added their objects: a room is a curated path through them.
 
 ## 4. Prepare students
 

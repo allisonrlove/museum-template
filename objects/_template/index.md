@@ -10,6 +10,10 @@ image-credit: "Where the picture came from. [Museum name](https://link-to-the-re
 summary: One or two sentences saying what this object is and why it matters.
 maker: Name of the maker, or "Unknown"
 object-date: Year or period, like 1210 CE or 4th century CE
+# year: one number used to sort the object on the timeline. Use a minus sign for BCE, like -500
+year: 1200
+# region: pick one: Africa, Asia, Americas, Europe, Middle East
+region: Europe
 placename: City or region, Country
 medium: What it is made of
 dimensions: Height about 00 cm

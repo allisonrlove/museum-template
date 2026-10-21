@@ -41,13 +41,15 @@ layout: base
 
 {% if page.objects and page.objects.size > 0 %}
 <div class="essay-end">
-{% include layout/picks.html
+{% capture essay_picks %}{% include layout/picks.html
   items=page.objects
   collection="objects"
   variant="strip"
   columns=page.objects.size
   kicker="In the collection"
   title="Objects in this essay"
-%}
+%}{% endcapture %}
+{% assign nm_open = "{:" | append: ":nomarkdown}" %}{% assign nm_close = "{:/nomarkdown" | append: "}" %}
+{{ essay_picks | remove: nm_open | remove: nm_close }}
 </div>
 {% endif %}

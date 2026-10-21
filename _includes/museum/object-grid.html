@@ -1,29 +1,49 @@
 {% comment %}
-  Object Grid — the collection as a wall of object cards, with theme filters.
+  Object Grid — the collection as a wall of object cards, filtered by region
+  and by period.
 
   Parameters:
     - items:   the object pages to show (required)
-    - filters: true | false — show the row of theme buttons (default: true)
+    - filters: true | false — show the filter buttons (default: true)
     - limit:   show only the first N objects (optional)
 
-  Each card reads its picture, title, date, and medium from that object's own
-  front matter, so nothing here is ever edited by hand.
+  Objects are shown oldest first. Each card reads its picture, title, date, and
+  medium from that object's own front matter, and its region and period from
+  the `region:` and `year:` lines, so nothing here is ever edited by hand.
 {% endcomment %}
 
 {% assign show_filters = include.filters | default: true %}
-{% assign sorted_items = include.items | sort: "title" %}
+{% assign sorted_items = include.items | sort: "year" %}
 {% if include.limit %}{% assign sorted_items = sorted_items | slice: 0, include.limit %}{% endif %}
-{% assign all_tags = sorted_items | map: "tags" | join: "," | split: "," | uniq | sort %}
+{% assign all_regions = sorted_items | map: "region" | compact | uniq | sort %}
+{% assign present_eras = "" %}
+{% for item in sorted_items %}
+  {% capture item_era %}{% include museum/era.html year=item.year %}{% endcapture %}
+  {% assign present_eras = present_eras | append: "," | append: item_era | strip %}
+{% endfor %}
+{% assign era_keys = "ancient,classical,medieval,modern" | split: "," %}
 
 {::nomarkdown}
 {% if sorted_items.size > 0 %}
 <div class="m-wide-wrap" data-object-filter>
-  {% if show_filters and all_tags.size > 1 %}
-  <div class="m-filters" role="group" aria-label="Filter objects by theme">
-    <button type="button" class="m-filter" data-filter="all" aria-pressed="true">All</button>
-    {% for tag in all_tags %}{% if tag != "" %}
-    <button type="button" class="m-filter" data-filter="{{ tag | escape }}" aria-pressed="false">{{ tag | replace: '-', ' ' }}</button>
-    {% endif %}{% endfor %}
+  {% if show_filters %}
+  <div class="m-filter-panel">
+    {% if all_regions.size > 1 %}
+    <div class="m-filters" role="group" aria-label="Filter objects by region" data-group="region">
+      <span class="m-filter-label">Region</span>
+      <button type="button" class="m-filter" data-filter="all" aria-pressed="true">All</button>
+      {% for r in all_regions %}
+      <button type="button" class="m-filter" data-filter="{{ r | escape }}" aria-pressed="false">{{ r }}</button>
+      {% endfor %}
+    </div>
+    {% endif %}
+    <div class="m-filters" role="group" aria-label="Filter objects by period" data-group="era">
+      <span class="m-filter-label">Period</span>
+      <button type="button" class="m-filter" data-filter="all" aria-pressed="true">All</button>
+      {% for key in era_keys %}{% if present_eras contains key %}
+      <button type="button" class="m-filter" data-filter="{{ key }}" aria-pressed="false">{% include museum/era.html key=key label=true %}</button>
+      {% endif %}{% endfor %}
+    </div>
   </div>
   {% endif %}
 
@@ -32,19 +52,21 @@
     {% if item.title and item.thumbnail %}
       {% capture item_url %}{% include helpers/link-path.html link=item.url %}{% endcapture %}
       {% capture item_img %}{% include helpers/image-path.html image-path=item.thumbnail page-dir=item.dir %}{% endcapture %}
-      <article class="m-object" data-tags="{{ item.tags | join: ',' | escape }}">
+      {% capture item_era %}{% include museum/era.html year=item.year %}{% endcapture %}
+      <article class="m-object" data-region="{{ item.region | escape }}" data-era="{{ item_era | strip }}">
         <a href="{{ item_url | strip }}">
           <div class="m-object-image"><img src="{{ item_img | strip }}" alt="" loading="lazy"></div>
           <div class="m-object-meta">
             {% if item.object-date %}<span class="m-object-date">{{ item.object-date }}</span>{% endif %}
             <h3 class="m-object-title">{{ item.title }}</h3>
-            <p class="m-object-detail">{% if item.maker %}{{ item.maker }}{% if item.medium or item.placename %} · {% endif %}{% endif %}{% if item.medium %}{{ item.medium }}{% elsif item.placename %}{{ item.placename }}{% endif %}</p>
+            <p class="m-object-detail">{% if item.placename %}{{ item.placename }}{% endif %}{% if item.placename and item.medium %} · {% endif %}{% if item.medium %}{{ item.medium }}{% endif %}</p>
           </div>
         </a>
       </article>
     {% endif %}
     {% endfor %}
   </div>
+  <p class="m-empty" hidden>No objects match those filters. Try choosing "All".</p>
 </div>
 {% else %}
   <div class="xanthan-warning">No objects yet. Add a folder to <code>objects/</code> and it will appear here.</div>

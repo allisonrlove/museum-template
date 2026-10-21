@@ -9,6 +9,8 @@ image-credit: "[The Metropolitan Museum of Art](https://www.metmuseum.org/), ope
 summary: A small lidded jar in costly materials, made for a substance that has not survived. It is evidence of a trade in things that leave no trace.
 maker: Unknown workshop
 object-date: 6th century CE
+year: 550
+region: Europe
 placename: Constantinople (present-day Istanbul)
 medium: Glass with gilt mount
 dimensions: Height about 8 cm

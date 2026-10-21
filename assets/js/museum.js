@@ -4,7 +4,7 @@
     1. Reading-progress bar on essays
     2. Gentle fade-in of essay sections as they scroll into view
     3. Click-to-enlarge images (lightbox)
-    4. Theme filter buttons on the objects page
+    4. Region and period filter buttons on the objects page
 */
 (function () {
   'use strict';
@@ -59,17 +59,32 @@
     dlg.addEventListener('click', function (ev) { if (ev.target !== img) dlg.close(); });
   }
 
-  // 4. Filters
+  // 4. Filters (region + period work together)
   document.querySelectorAll('[data-object-filter]').forEach(function (wrap) {
-    var buttons = wrap.querySelectorAll('.m-filter');
+    var groups = wrap.querySelectorAll('.m-filters');
     var cards = wrap.querySelectorAll('.m-object');
-    buttons.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var f = btn.getAttribute('data-filter');
-        buttons.forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
-        cards.forEach(function (card) {
-          var tags = (card.getAttribute('data-tags') || '').split(',');
-          card.hidden = !(f === 'all' || tags.indexOf(f) !== -1);
+    var empty = wrap.querySelector('.m-empty');
+    var state = {};
+    var apply = function () {
+      var shown = 0;
+      cards.forEach(function (card) {
+        var ok = Object.keys(state).every(function (g) {
+          return state[g] === 'all' || card.getAttribute('data-' + g) === state[g];
+        });
+        card.hidden = !ok;
+        if (ok) shown++;
+      });
+      if (empty) empty.hidden = shown > 0;
+    };
+    groups.forEach(function (group) {
+      var name = group.getAttribute('data-group');
+      state[name] = 'all';
+      var buttons = group.querySelectorAll('.m-filter');
+      buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          state[name] = btn.getAttribute('data-filter');
+          buttons.forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+          apply();
         });
       });
     });
