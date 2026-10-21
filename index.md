@@ -35,8 +35,8 @@ featured:
 </div>
 </section>
 
-<section class="m-section m-section--tint">
-<div class="m-wrap">
+<section class="m-section m-section--tint" markdown="1">
+<div class="m-wrap" markdown="1">
 <div class="m-section-title">
   <h2>From the collection</h2>
   <a href="{{ site.baseurl }}/objects">All objects &rarr;</a>
@@ -50,8 +50,8 @@ featured:
 </div>
 </section>
 
-<section class="m-section">
-<div class="m-wrap">
+<section class="m-section" markdown="1">
+<div class="m-wrap" markdown="1">
 <div class="m-section-title">
   <h2>Essays</h2>
   <a href="{{ site.baseurl }}/essays">All essays &rarr;</a>
