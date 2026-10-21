@@ -1,0 +1,32 @@
+# Guided routes for the "Plan your visit" page.
+# Each route is a short walk through the museum. Add or change routes by copying
+# a block. `stops` are folder names inside objects/, in the order to visit.
+- title: The quick look
+  minutes: 15
+  description: Five objects that give the whole museum in miniature, from the oldest to the newest.
+  stops:
+    - scarab-of-queen-tiye
+    - zhou-ritual-vessel
+    - roman-glass-flask
+    - bowl-with-dragons
+    - planispheric-astrolabe
+
+- title: Things in hand
+  minutes: 25
+  description: Small objects that were made to be held, pressed, worn or opened.
+  stops:
+    - mitanni-cylinder-seal
+    - scarab-of-queen-tiye
+    - cosmetic-jar
+    - tsuba-sword-guard
+    - planispheric-astrolabe
+
+- title: Across the world
+  minutes: 30
+  description: One object from each corner of the collection, with the essays that connect them.
+  stops:
+    - maya-double-vessel
+    - buddha-head
+    - zhou-ritual-vessel
+    - roman-glass-flask
+    - scarab-of-queen-tiye

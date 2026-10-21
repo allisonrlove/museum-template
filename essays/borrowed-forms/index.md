@@ -16,7 +16,7 @@ tags:
 
 objects:
   - slug: buddha-head
-    label: Gandhara, 4th窶・th century
+    label: Gandhara, 4th-5th century
   - slug: bowl-with-dragons
     label: Tabriz, 1210
 ---

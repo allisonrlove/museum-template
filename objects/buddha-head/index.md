@@ -9,6 +9,8 @@ image-credit: "[The Metropolitan Museum of Art](https://www.metmuseum.org/art/co
 summary: A stucco head in which a South Asian subject is carved with Greek sculptural habits, a single object holding two traditions at once.
 maker: Unknown Gandharan workshop
 object-date: 4th–5th century CE
+year: 400
+region: Asia
 placename: Gandhara (present-day Pakistan)
 medium: Stucco with traces of paint
 dimensions: Height about 25 cm

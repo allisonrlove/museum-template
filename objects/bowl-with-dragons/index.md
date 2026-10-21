@@ -9,6 +9,8 @@ image-credit: "[The Metropolitan Museum of Art](https://www.metmuseum.org/), ope
 summary: Coiled dragons meet at the centre of a glazed bowl, in a motif read by some scholars as a device against eclipses.
 maker: Unknown potter
 object-date: 607 AH / 1210 CE
+year: 1210
+region: Middle East
 placename: Tabriz, Iran
 medium: Glazed ceramic
 dimensions: Diameter about 20 cm

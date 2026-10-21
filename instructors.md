@@ -31,7 +31,10 @@ Press **`.`** on the repository page to edit in the browser.
 | Colours | `assets/css/themes/museum.css`, the **THE PALETTE** block at the top |
 | Fonts | The same file, **THE FONTS** block. Change the Google Fonts link and the two names. |
 | Menu | `_data/nav-top.yml` |
-| Home page | `index.md` |
+| Home page | `index.md`. Set `spotlight:` to an object's folder name to change the **Object of the week**. |
+| Exhibitions (rooms) | Copy `exhibitions/_template`, rename it, and list objects and essays by folder name. Set `position` for the order. |
+| Guided routes | `_data/routes.yml`: each route has a title, minutes, description and a list of object folder names. |
+| Timeline and filters | Automatic. They use each object's `year` and `region`. Eras: before 500 BCE, 500 BCE to 500 CE, 500 to 1500 CE, after 1500 CE. |
 | About page | `about.md` |
 | Footer | `_includes/layout/footer.html` |
 
@@ -39,7 +42,7 @@ Palette changes apply everywhere. Keep text and background contrast high so page
 
 ## 3. Clear the samples
 
-Delete the folders inside `objects` and `essays` that do not start with `_`, and update the featured items on `index.md`. Keep `_template` folders. Students copy them.
+Delete the folders inside `objects`, `essays` and `exhibitions` that do not start with `_`, clear `_data/routes.yml`, and set `spotlight:` on `index.md` to one of your own objects. Keep `_template` folders. Students copy them. Plan rooms after students have added their objects: a room is a curated path through them.
 
 ## 4. Prepare students
 

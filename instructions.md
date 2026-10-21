@@ -55,6 +55,8 @@ You will see a list of folders on the left. The two you care about are **`object
 | `image-alt` | A description of the picture for people who cannot see it | Yes |
 | `image-credit` | Where the picture came from | Yes |
 | `maker`, `object-date`, `placename`, `medium`, `dimensions`, `collection`, `accession` | Facts for the label. Delete a line if you do not know it. | No |
+| `year` | One number that places your object on the timeline. Use a minus sign for BCE (`-500`). | Yes |
+| `region` | Africa, Asia, Americas, Europe or Middle East. Used by the filters. | Yes |
 | `tags` | One to three themes. Reuse tags other students have used so the filters work. | No |
 | `published` | `false` hides your page. Delete the line when you are done. | No |
 
