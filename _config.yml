@@ -1,6 +1,6 @@
 title: The Online Museum
 tagline: A museum of objects and the stories they tell
-baseurl: "/object-collection-template"   # the name of your GitHub repository, with a leading slash
+baseurl: "/museum-template"   # the name of your GitHub repository, with a leading slash
 analytics_id:   # optional: paste your Google Analytics measurement ID (G-XXXXXXXXXX)
 search: true    # set to false to disable site search
 theme_css: museum   # the museum look lives in assets/css/themes/museum.css
