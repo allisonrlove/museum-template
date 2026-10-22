@@ -327,6 +327,10 @@ SHARED MUSEUM PIECES
 .m-section--dark h2, .m-section--dark h3 { color: var(--museum-paper); }
 .m-section--dark .m-section-title { border-color: rgba(248, 246, 243, 0.2); }
 .m-section--dark a { color: var(--museum-accent-light); }
+.m-section--dark a.m-button--light, .m-section--dark a.m-button--light:visited { color: var(--museum-ink); }
+.m-section--dark a.m-button--light:hover { color: #fff; }
+.m-section--dark a.m-button--outline, .m-section--dark a.m-button--outline:visited { color: var(--museum-paper); }
+.m-section--dark a.m-button--outline:hover { color: var(--museum-ink); }
 
 /* A big opening statement, used on the home page and about page */
 .m-statement {
@@ -934,7 +938,7 @@ OBJECT PAGE — place in time, and the rooms an object is shown in
 @media (max-width: 40rem) { .object-time-inner { grid-template-columns: 1fr; gap: 0.75rem; } }
 
 .container > .object-more { grid-column: full; margin-top: var(--spacing-xl); background: var(--museum-mist); }
-.object-more-inner { max-width: var(--home-measure); margin-inline: auto; padding: var(--spacing-xl) var(--spacing-md); }
+.object-more-inner { max-width: 48rem; margin-inline: auto; padding: var(--spacing-xl) var(--spacing-sm); }
 .object-more h2 { margin: 0 0 1rem; font-weight: 300; }
 .object-more-lead { margin: 0 0 1rem; color: var(--museum-stone); }
 .object-more-list { display: flex; flex-wrap: wrap; gap: 1rem; margin: 0; padding: 0; list-style: none; }
