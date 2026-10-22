@@ -784,10 +784,10 @@ HOME  — dark opening with an "object of the week" spotlight
   color: var(--museum-ink);
   text-decoration: none; border: 0;
   box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
-  transform: rotate(1.2deg);
+  transform: none;
   transition: transform 0.4s ease;
 }
-.home-spotlight:hover { transform: rotate(0) translateY(-4px); color: var(--museum-ink); }
+.home-spotlight:hover { transform: translateY(-4px); color: var(--museum-ink); }
 .home-spotlight-label {
   display: block; margin-bottom: 0.9rem;
   font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
@@ -946,10 +946,10 @@ OBJECT PAGE — place in time, and the rooms an object is shown in
 /*****************************************************
 TIMELINE  — museum/timeline.html
 *****************************************************/
-.m-timeline-nav { position: sticky; top: 0; z-index: 5; display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 var(--spacing-lg); padding: 0.75rem 0; background: var(--museum-paper); border-bottom: 1px solid var(--museum-line); }
+.m-timeline-nav { position: sticky; top: 5.6rem; z-index: 5; display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 var(--spacing-lg); padding: 0.75rem 0; background: var(--museum-paper); border-bottom: 1px solid var(--museum-line); }
 .m-timeline-nav a { padding: 0.45rem 0.9rem; border: 1px solid var(--museum-line); border-radius: 999px; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.06em; text-decoration: none; color: var(--museum-stone); }
 .m-timeline-nav a:hover { border-color: var(--museum-ink); color: var(--museum-ink); }
-.m-tl-era { margin-bottom: var(--spacing-xl); scroll-margin-top: 5rem; }
+.m-tl-era { margin-bottom: var(--spacing-xl); scroll-margin-top: 10rem; }
 .m-tl-era-title { margin: 0 0 var(--spacing-md); font-weight: 300; }
 .m-tl-list { position: relative; margin: 0; padding: 0 0 0 2rem; list-style: none; border-left: 2px solid var(--museum-ink); }
 .m-tl-item { position: relative; margin: 0 0 1.5rem; }
