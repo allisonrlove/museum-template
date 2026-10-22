@@ -439,7 +439,8 @@ ESSAY GRID  (museum/essay-grid.html)
 .m-essay-summary { margin: 0.6rem 0 0.75rem; font-size: 0.95rem; line-height: 1.55; color: var(--museum-stone); }
 .m-essay-byline { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--museum-stone); }
 
-/* the first essay is featured at double width */
+/* the first essay is featured at double width; the rest sit in pairs so no card is left alone */
+.m-essay-grid--feature { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .m-essay-grid--feature .m-essay:first-child { grid-column: 1 / -1; }
 .m-essay-grid--feature .m-essay:first-child a { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(1.5rem, 4vw, 3rem); align-items: center; }
 .m-essay-grid--feature .m-essay:first-child .m-essay-image { aspect-ratio: 16 / 10; }
@@ -470,7 +471,7 @@ A wall label beside the object, like a gallery room.
 }
 .object-hero-inner > * { min-width: 0; }
 .object-hero-media { margin: 0; text-align: center; }
-.object-hero-media a { display: block; border: 0; cursor: zoom-in; }
+.object-hero-media > a { display: block; border: 0; cursor: zoom-in; }
 .object-hero-media img {
   max-width: 100%;
   max-height: 78vh;
@@ -638,7 +639,7 @@ figure figcaption, .m-figure figcaption {
 }
 .container .m-figure { margin: 2.5rem 0; }
 .m-figure img { display: block; width: 100%; height: auto; }
-.m-figure a { display: block; border: 0; cursor: zoom-in; }
+.m-figure > a { display: block; border: 0; cursor: zoom-in; }
 .container .m-figure--wide { grid-column: full; justify-self: center; width: min(56rem, calc(100% - 2rem)); margin-inline: 0; transform: none; }
 .container .m-figure--full { grid-column: full; width: 100%; margin-inline: 0; transform: none; }
 .m-figure--full figcaption { max-width: 48rem; margin-inline: auto; padding: 0 var(--spacing-md); }
