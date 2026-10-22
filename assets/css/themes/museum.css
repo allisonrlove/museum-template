@@ -327,6 +327,10 @@ SHARED MUSEUM PIECES
 .m-section--dark h2, .m-section--dark h3 { color: var(--museum-paper); }
 .m-section--dark .m-section-title { border-color: rgba(248, 246, 243, 0.2); }
 .m-section--dark a { color: var(--museum-accent-light); }
+.m-section--dark a.m-button--light, .m-section--dark a.m-button--light:visited { color: var(--museum-ink); }
+.m-section--dark a.m-button--light:hover { color: #fff; }
+.m-section--dark a.m-button--outline, .m-section--dark a.m-button--outline:visited { color: var(--museum-paper); }
+.m-section--dark a.m-button--outline:hover { color: var(--museum-ink); }
 
 /* A big opening statement, used on the home page and about page */
 .m-statement {
@@ -435,7 +439,8 @@ ESSAY GRID  (museum/essay-grid.html)
 .m-essay-summary { margin: 0.6rem 0 0.75rem; font-size: 0.95rem; line-height: 1.55; color: var(--museum-stone); }
 .m-essay-byline { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--museum-stone); }
 
-/* the first essay is featured at double width */
+/* the first essay is featured at double width; the rest sit in pairs so no card is left alone */
+.m-essay-grid--feature { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .m-essay-grid--feature .m-essay:first-child { grid-column: 1 / -1; }
 .m-essay-grid--feature .m-essay:first-child a { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(1.5rem, 4vw, 3rem); align-items: center; }
 .m-essay-grid--feature .m-essay:first-child .m-essay-image { aspect-ratio: 16 / 10; }
@@ -466,7 +471,7 @@ A wall label beside the object, like a gallery room.
 }
 .object-hero-inner > * { min-width: 0; }
 .object-hero-media { margin: 0; text-align: center; }
-.object-hero-media a { display: block; border: 0; cursor: zoom-in; }
+.object-hero-media > a { display: block; border: 0; cursor: zoom-in; }
 .object-hero-media img {
   max-width: 100%;
   max-height: 78vh;
@@ -634,7 +639,7 @@ figure figcaption, .m-figure figcaption {
 }
 .container .m-figure { margin: 2.5rem 0; }
 .m-figure img { display: block; width: 100%; height: auto; }
-.m-figure a { display: block; border: 0; cursor: zoom-in; }
+.m-figure > a { display: block; border: 0; cursor: zoom-in; }
 .container .m-figure--wide { grid-column: full; justify-self: center; width: min(56rem, calc(100% - 2rem)); margin-inline: 0; transform: none; }
 .container .m-figure--full { grid-column: full; width: 100%; margin-inline: 0; transform: none; }
 .m-figure--full figcaption { max-width: 48rem; margin-inline: auto; padding: 0 var(--spacing-md); }
@@ -934,7 +939,7 @@ OBJECT PAGE — place in time, and the rooms an object is shown in
 @media (max-width: 40rem) { .object-time-inner { grid-template-columns: 1fr; gap: 0.75rem; } }
 
 .container > .object-more { grid-column: full; margin-top: var(--spacing-xl); background: var(--museum-mist); }
-.object-more-inner { max-width: var(--home-measure); margin-inline: auto; padding: var(--spacing-xl) var(--spacing-md); }
+.object-more-inner { max-width: 48rem; margin-inline: auto; padding: var(--spacing-xl) var(--spacing-sm); }
 .object-more h2 { margin: 0 0 1rem; font-weight: 300; }
 .object-more-lead { margin: 0 0 1rem; color: var(--museum-stone); }
 .object-more-list { display: flex; flex-wrap: wrap; gap: 1rem; margin: 0; padding: 0; list-style: none; }
