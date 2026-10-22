@@ -461,10 +461,10 @@ A wall label beside the object, like a gallery room.
   gap: clamp(2rem, 6vw, 5rem);
   align-items: center;
   max-width: var(--home-measure);
-  min-height: 70vh;
   margin-inline: auto;
-  padding: clamp(2rem, 5vw, 4rem) var(--spacing-md);
+  padding: clamp(2rem, 4vw, 3rem) var(--spacing-md);
 }
+.object-hero-inner > * { min-width: 0; }
 .object-hero-media { margin: 0; text-align: center; }
 .object-hero-media a { display: block; border: 0; cursor: zoom-in; }
 .object-hero-media img {
@@ -564,8 +564,13 @@ A magazine opening, then long-form reading.
 }
 
 /* The reading text: a serif at a comfortable size and measure */
-.essay-body { font-family: var(--font-serif); font-size: 1.28rem; line-height: 1.7; font-weight: 400; }
-.essay-body p { line-height: 1.7; margin-bottom: 1.4em; }
+.essay-body { font-family: var(--font-serif); font-size: 1.2rem; line-height: 1.7; font-weight: 400; }
+.essay-body p { line-height: 1.7; margin-bottom: 1.3em; text-align: left; hyphens: manual; }
+.essay-body > p:first-child > em:only-child, .object-body > p:first-child > em:only-child {
+  display: block; padding: 0.6rem 0.9rem; margin-bottom: 0.5rem;
+  border-left: 3px solid var(--museum-line);
+  font-family: var(--font-body); font-size: 0.85rem; font-style: normal; color: var(--museum-stone);
+}
 .essay-body .dropcap::first-letter {
   float: left;
   margin: 0.08em 0.12em -0.05em 0;
@@ -610,7 +615,15 @@ A magazine opening, then long-form reading.
   line-height: 1.25;
   color: var(--museum-ink);
 }
-.pullquote::before { color: var(--museum-accent-light); opacity: 0.35; }
+/* The oversized quotation mark from the base style spilled out to the left
+   and sat on top of the text; keep it small and out of the text's way. */
+.pullquote { padding-inline: 0; }
+.pullquote::before { display: none; }
+.pullquote p { position: static; text-align: left; margin: 0; }
+
+/* Keep every block inside the reading column */
+.container > * { min-width: 0; }
+.essay-body blockquote, .object-body blockquote { max-width: 100%; margin-inline: 0; font-size: 1em; }
 
 /* Figures */
 figure figcaption, .m-figure figcaption {
@@ -622,8 +635,8 @@ figure figcaption, .m-figure figcaption {
 .container .m-figure { margin: 2.5rem 0; }
 .m-figure img { display: block; width: 100%; height: auto; }
 .m-figure a { display: block; border: 0; cursor: zoom-in; }
-.m-figure--wide { width: min(64rem, calc(100vw - 2rem)); margin-left: 50%; transform: translateX(-50%); }
-.m-figure--full { width: 100vw; margin-left: 50%; transform: translateX(-50%); }
+.container > .m-figure--wide { grid-column: full; justify-self: center; width: min(56rem, calc(100% - 2rem)); margin-inline: 0; transform: none; }
+.container > .m-figure--full { grid-column: full; width: 100%; margin-inline: 0; transform: none; }
 .m-figure--full figcaption { max-width: 48rem; margin-inline: auto; padding: 0 var(--spacing-md); }
 .m-figure--small { width: 60%; margin-inline: auto; }
 @media (max-width: 40rem) { .m-figure--small { width: 100%; } }
@@ -949,8 +962,10 @@ HOME RIBBON  — museum/ribbon.html
 *****************************************************/
 .m-ribbon { overflow-x: auto; padding-bottom: 1rem; scroll-snap-type: x proximity; }
 .m-ribbon:focus-visible { outline: 2px solid var(--museum-accent); outline-offset: 4px; }
-.m-ribbon-track { display: flex; gap: 1rem; margin: 0; padding: 0; list-style: none; border-top: 2px solid var(--museum-ink); }
-.m-ribbon-track li { position: relative; flex: 0 0 12.5rem; padding-top: 1.25rem; scroll-snap-align: start; }
+.m-ribbon-track { display: flex; align-items: flex-start; gap: 1.25rem; width: max-content; margin: 0; padding: 0; list-style: none; border-top: 2px solid var(--museum-ink); }
+.m-ribbon-track li { position: relative; flex: 0 0 11rem; width: 11rem; margin: 0; padding-top: 1.25rem; scroll-snap-align: start; }
+.m-ribbon-date { min-height: 2.4em; line-height: 1.2; }
+.m-ribbon-title { min-height: 2.6em; }
 .m-ribbon-track li::before { content: ""; position: absolute; top: -7px; left: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--museum-accent); }
 .m-ribbon-track a { display: block; text-decoration: none; border: 0; color: inherit; }
 .m-ribbon-date { display: block; margin-bottom: 0.6rem; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--museum-accent); }
