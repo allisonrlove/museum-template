@@ -635,8 +635,8 @@ figure figcaption, .m-figure figcaption {
 .container .m-figure { margin: 2.5rem 0; }
 .m-figure img { display: block; width: 100%; height: auto; }
 .m-figure a { display: block; border: 0; cursor: zoom-in; }
-.container > .m-figure--wide { grid-column: full; justify-self: center; width: min(56rem, calc(100% - 2rem)); margin-inline: 0; transform: none; }
-.container > .m-figure--full { grid-column: full; width: 100%; margin-inline: 0; transform: none; }
+.container .m-figure--wide { grid-column: full; justify-self: center; width: min(56rem, calc(100% - 2rem)); margin-inline: 0; transform: none; }
+.container .m-figure--full { grid-column: full; width: 100%; margin-inline: 0; transform: none; }
 .m-figure--full figcaption { max-width: 48rem; margin-inline: auto; padding: 0 var(--spacing-md); }
 .m-figure--small { width: 60%; margin-inline: auto; }
 @media (max-width: 40rem) { .m-figure--small { width: 100%; } }
@@ -687,6 +687,11 @@ a.m-callout:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); b
    them still sits in the reading column (or spans the window) like any other
    page content. */
 .object-body, .essay-body, .essay-end { display: contents; }
+/* Children of a display:contents wrapper are not direct children of .container,
+   so `.container > *` skips them and they fall into the narrow side columns
+   (this is what pushed the italic note to the left of the text). Put them in
+   the reading column explicitly. */
+.container .object-body > *, .container .essay-body > *, .container .room-intro > * { grid-column: content; min-width: 0; }
 .essay-end > .home-picks { grid-column: full; margin-top: var(--spacing-xl); border-top: 1px solid var(--museum-line); }
 
 /* Fade sections in as they scroll into view (museum.js adds .is-visible) */
@@ -871,6 +876,12 @@ A dark gallery: objects on black, one at a time.
 .room-intro { padding: var(--spacing-xl) 0 var(--spacing-lg); font-family: var(--font-serif); font-size: 1.25rem; line-height: 1.7; }
 .room-intro > p:first-of-type { font-size: 1.45rem; }
 .room-intro, .room-stops, .room-reading { display: contents; }
+.container .room-intro > p:first-child > em:only-child {
+  display: block; padding: 0.6rem 0.9rem;
+  border-left: 3px solid var(--museum-line);
+  font-family: var(--font-body); font-size: 0.85rem; font-style: normal; color: var(--museum-stone);
+}
+.container .room-intro > :first-child { margin-top: var(--spacing-lg); }
 .container > .room-stops > .room-stop { grid-column: full; }
 
 .room-stop {
